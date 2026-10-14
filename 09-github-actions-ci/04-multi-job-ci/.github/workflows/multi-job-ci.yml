@@ -1,0 +1,65 @@
+name: Multi Job CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run lint validation
+        run: |
+          echo "Running lint checks..."
+          echo "Lint validation passed"
+
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          echo "Running application tests..."
+          echo "All tests passed"
+
+
+  build:
+    name: Build
+    needs:
+      - lint
+      - test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build application
+        run: |
+          echo "Building application..."
+          mkdir -p build
+          echo "Product Service Build" > build/application.txt
+
+      - name: Show build output
+        run: |
+          echo "Build completed successfully"
+          cat build/application.txt

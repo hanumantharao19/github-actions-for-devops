@@ -1,0 +1,34 @@
+name: Success and Failure Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  status-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Build application
+        run: echo "Build completed successfully"
+
+      - name: Run tests
+        run: echo "Tests completed successfully"
+
+      - name: Success step
+        if: success()
+        run: echo "Previous steps succeeded"
+
+      - name: Intentional failure
+        id: failure-step
+        run: |
+          echo "Simulating test failure"
+          exit 1
+
+      - name: Normal step after failure
+        run: echo "This step will be skipped"
+
+      - name: Failure handling
+        if: failure()
+        run: echo "A previous step failed"

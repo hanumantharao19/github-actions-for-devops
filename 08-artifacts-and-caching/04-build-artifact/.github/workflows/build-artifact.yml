@@ -1,0 +1,37 @@
+name: Build Artifact Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create build directory
+        run: mkdir -p build
+
+      - name: Build application
+        run: |
+          echo "Product Service" > build/application.txt
+          echo "Version: 1.0" > build/version.txt
+          echo "Environment independent build" > build/build-info.txt
+
+      - name: Show build output
+        run: |
+          echo "Build output:"
+          ls -la build
+          cat build/application.txt
+          cat build/version.txt
+          cat build/build-info.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: product-service-build
+          path: build/

@@ -1,0 +1,28 @@
+name: Run Commands Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  commands:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Show current directory
+        run: pwd
+
+      - name: Show current user
+        run: whoami
+
+      - name: Show date
+        run: date
+
+      - name: Show operating system
+        run: uname -a
+
+      - name: Show Git version
+        run: git --version
+
+      - name: Show Python version
+        run: python --version

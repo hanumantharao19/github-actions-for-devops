@@ -1,0 +1,29 @@
+name: Runners Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  runner-info:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Operating System
+        run: uname -a
+
+      - name: Current User
+        run: whoami
+
+      - name: Current Directory
+        run: pwd
+
+      - name: List Files
+        run: ls -la
+
+      - name: Git Version
+        run: git --version
+
+      - name: Docker Version
+        run: docker --version

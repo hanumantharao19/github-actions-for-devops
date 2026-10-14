@@ -1,0 +1,25 @@
+name: Checkout Action Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  checkout-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show repository files
+        run: |
+          echo "Repository files:"
+          ls -la
+
+      - name: Show Git status
+        run: git status
+
+      - name: Show current commit
+        run: git log -1 --oneline

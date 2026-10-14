@@ -1,0 +1,18 @@
+name: Path Filter Demo
+
+on:
+  push:
+    paths:
+      - 'application/**'
+      - 'Dockerfile'
+
+jobs:
+  application-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Application changed
+        run: echo "Application files or Dockerfile changed"
+
+      - name: Build application
+        run: echo "Building application"

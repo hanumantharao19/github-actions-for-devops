@@ -1,0 +1,28 @@
+name: Shell Types Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  shells:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Bash shell
+        shell: bash
+        run: |
+          echo "Hello from Bash"
+          pwd
+
+      - name: Python shell
+        shell: python
+        run: |
+          print("Hello from Python")
+          print("Python is executing this step")
+
+      - name: PowerShell shell
+        shell: pwsh
+        run: |
+          Write-Host "Hello from PowerShell"
+          Get-Location

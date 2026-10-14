@@ -1,0 +1,33 @@
+name: Dependency Caching Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  node-cache:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js with npm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Show Node.js version
+        run: node --version
+
+      - name: Show npm version
+        run: npm --version
+
+      - name: Install dependencies
+        run: npm ci
+        if: ${{ hashFiles('package-lock.json') != '' }}
+
+      - name: Show cache information
+        run: echo "npm dependency caching is enabled"

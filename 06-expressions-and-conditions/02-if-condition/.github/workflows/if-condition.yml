@@ -1,0 +1,26 @@
+name: If Condition Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Build application
+        run: echo "Building application"
+
+      - name: Main branch check
+        if: github.ref_name == 'main'
+        run: echo "This step runs only on main"
+
+      - name: Non-main branch check
+        if: github.ref_name != 'main'
+        run: echo "This step runs on non-main branches"
+
+      - name: Deployment check
+        if: github.ref_name == 'main' && github.event_name == 'workflow_dispatch'
+        run: echo "Deployment condition matched"

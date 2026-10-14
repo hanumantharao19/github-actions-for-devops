@@ -1,0 +1,14 @@
+name: Events Demo
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  events-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show event
+        run: echo "Workflow triggered successfully"

@@ -1,0 +1,48 @@
+name: Download Artifact Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Create build directory
+        run: |
+          mkdir -p build
+          echo "Product Service Application" > build/app.txt
+          echo "Version: 1.0" > build/version.txt
+
+      - name: Upload application artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: application-build
+          path: build/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Download application artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: application-build
+          path: build/
+
+      - name: Show downloaded files
+        run: |
+          echo "Downloaded files:"
+          ls -la build
+
+      - name: Read application files
+        run: |
+          cat build/app.txt
+          cat build/version.txt
+
+      - name: Deploy application
+        run: echo "Deploying application artifact"

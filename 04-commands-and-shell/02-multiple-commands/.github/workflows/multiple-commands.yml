@@ -1,0 +1,26 @@
+name: Multiple Commands Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  commands:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: System information
+        run: |
+          echo "Current directory:"
+          pwd
+
+          echo "Current user:"
+          whoami
+
+          echo "Operating system:"
+          uname -a
+
+      - name: Git information
+        run: |
+          git --version
+          git config --list

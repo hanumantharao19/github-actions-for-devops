@@ -1,0 +1,39 @@
+name: Contexts Demo
+
+on:
+  workflow_dispatch:
+
+env:
+  APP_NAME: product-service
+
+jobs:
+
+  context-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: GitHub context
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+
+      - name: Environment context
+        run: |
+          echo "Application: ${{ env.APP_NAME }}"
+
+      - name: Variables context
+        run: |
+          echo "Repository variable: ${{ vars.APP_NAME }}"
+
+      - name: Runner context
+        run: |
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Runner architecture: ${{ runner.arch }}"
+
+      - name: Conditional context
+        if: github.ref_name == 'main'
+        run: echo "Running on main branch"

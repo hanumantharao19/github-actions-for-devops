@@ -1,0 +1,33 @@
+name: Environment Variables Demo
+
+on:
+  workflow_dispatch:
+
+env:
+  APP_NAME: product-service
+  ENVIRONMENT: dev
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      VERSION: "1.0"
+
+    steps:
+
+      - name: Show workflow variables
+        run: |
+          echo "Application: $APP_NAME"
+          echo "Environment: $ENVIRONMENT"
+
+      - name: Show job variable
+        run: |
+          echo "Version: $VERSION"
+
+      - name: Step variable
+        env:
+          BUILD_NUMBER: "100"
+        run: |
+          echo "Build number: $BUILD_NUMBER"

@@ -1,0 +1,28 @@
+name: Working Directory Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  working-directory:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show default directory
+        run: pwd
+
+      - name: Create application directory
+        run: |
+          mkdir -p application
+          echo "Hello Application" > application/app.txt
+
+      - name: Run command inside application
+        working-directory: ./application
+        run: |
+          pwd
+          ls -la
+          cat app.txt

@@ -1,0 +1,28 @@
+name: Steps Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  steps-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Show current directory
+        run: pwd
+
+      - name: List files
+        run: ls -la
+
+      - name: Show operating system
+        run: uname -a
+
+      - name: Print message
+        run: echo "GitHub Actions is working"
+
+      - name: Run multiple commands
+        run: |
+          echo "Command 1"
+          echo "Command 2"
+          echo "Command 3"

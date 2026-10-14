@@ -1,0 +1,25 @@
+name: Community Actions Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  actions-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Show Node.js version
+        run: node --version
+
+      - name: Show action-based workflow
+        run: echo "Reusable actions can be combined with shell commands"

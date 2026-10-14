@@ -1,0 +1,36 @@
+name: Expressions Demo
+
+on:
+  workflow_dispatch:
+
+env:
+  APP_NAME: product-service
+
+jobs:
+
+  expressions:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Show application
+        run: echo "Application: ${{ env.APP_NAME }}"
+
+      - name: Show repository
+        run: echo "Repository: ${{ github.repository }}"
+
+      - name: Show branch
+        run: echo "Branch: ${{ github.ref_name }}"
+
+      - name: Compare branch
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "This is the main branch"
+          else
+            echo "This is not the main branch"
+          fi
+
+      - name: Expression result
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Actor: ${{ github.actor }}"

@@ -1,0 +1,23 @@
+name: Repository Variables Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  show-variables:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Show application configuration
+        run: |
+          echo "Application: ${{ vars.APP_NAME }}"
+          echo "Environment: ${{ vars.ENVIRONMENT }}"
+          echo "AWS Region: ${{ vars.AWS_REGION }}"
+
+      - name: Deployment information
+        run: |
+          echo "Deploying ${{ vars.APP_NAME }}"
+          echo "Environment: ${{ vars.ENVIRONMENT }}"
+          echo "Region: ${{ vars.AWS_REGION }}"

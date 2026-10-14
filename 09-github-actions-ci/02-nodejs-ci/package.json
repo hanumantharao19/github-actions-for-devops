@@ -1,0 +1,9 @@
+{
+  "name": "github-actions-nodejs-ci",
+  "version": "1.0.0",
+  "description": "Node.js CI example for GitHub Actions",
+  "scripts": {
+    "test": "node test.js",
+    "build": "mkdir -p dist && cp app.js dist/app.js"
+  }
+}

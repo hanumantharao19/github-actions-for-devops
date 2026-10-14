@@ -1,0 +1,31 @@
+name: Upload Artifact Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create build directory
+        run: |
+          mkdir -p build
+          echo "Product Service Application" > build/app.txt
+          echo "Version: 1.0" > build/version.txt
+
+      - name: Show build files
+        run: |
+          echo "Build files:"
+          ls -la build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: application-build
+          path: build/
