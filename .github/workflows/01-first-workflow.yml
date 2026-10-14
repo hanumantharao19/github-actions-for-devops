@@ -12,7 +12,7 @@ jobs:
         run: echo "Hello from GitHub Actions"
 
       - name: Show repository
-        run: echo "Repository: ${{ github.repository }}"
+        run: 'echo "Repository: ${{ github.repository }}"'
 
       - name: Show branch
-        run: echo "Branch: ${{ github.ref_name }}"
+        run: 'echo "Branch: ${{ github.ref_name }}"'
