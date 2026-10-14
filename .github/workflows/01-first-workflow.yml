@@ -1,0 +1,18 @@
+name: 01 - First GitHub Actions Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "Hello from GitHub Actions"
+
+      - name: Show repository
+        run: echo "Repository: ${{ github.repository }}"
+
+      - name: Show branch
+        run: echo "Branch: ${{ github.ref_name }}"
