@@ -18,7 +18,7 @@ jobs:
         run: echo "Pull request workflow triggered"
 
       - name: Show source branch
-        run: echo "Source branch: ${{ github.head_ref }}"
+        run: 'echo "Source branch: ${{ github.head_ref }}"'
 
       - name: Show target branch
-        run: echo "Target branch: ${{ github.base_ref }}"
+        run: 'echo "Target branch: ${{ github.base_ref }}"'
