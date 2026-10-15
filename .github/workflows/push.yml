@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Show branch
-        run: echo "Workflow triggered by a push"
+        run: 'echo "Workflow triggered by a push"'
 
       - name: Show commit
-        run: echo "Commit SHA: ${{ github.sha }}"
+        run: 'echo "Commit SHA: ${{ github.sha }}"'
