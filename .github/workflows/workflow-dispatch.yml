@@ -1,0 +1,24 @@
+name: Manual Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select environment"
+        required: true
+        type: choice
+        options:
+          - dev
+          - qa
+          - prod
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show environment
+        run: echo "Selected environment: ${{ inputs.environment }}"
+
+      - name: Deploy
+        run: echo "Deploying application to ${{ inputs.environment }}"

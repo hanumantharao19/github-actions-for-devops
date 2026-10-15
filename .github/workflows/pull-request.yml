@@ -1,0 +1,24 @@
+name: Pull Request Trigger Demo
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  pull-request-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull request validation
+        run: echo "Pull request workflow triggered"
+
+      - name: Show source branch
+        run: echo "Source branch: ${{ github.head_ref }}"
+
+      - name: Show target branch
+        run: echo "Target branch: ${{ github.base_ref }}"
